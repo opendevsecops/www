@@ -1,0 +1,10 @@
+{
+  "locals": {
+    "siteUrl": "https://www.gnucitizen.org"
+  },
+
+  "plugins": [
+    "wintersmith-less",
+    "wintersmith-browserify"
+  ]
+}
