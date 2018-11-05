@@ -1,0 +1,31 @@
+doctype html
+
+html(lang="en")
+    head
+        title=page.title
+
+        script(type="text/javascript", src=contents['all.js'].getUrl())
+        link(type="text/css", href=contents['all.less'].getUrl(), rel="stylesheet")
+
+    body
+        header
+            nav
+                ul.left
+                    li: a(href=contents['index.html'].getUrl()) Home
+                    li: a(href=contents['about.md'].getUrl()) About
+
+            div.cc
+                img.f70(src=contents['images']['icon.png'].getUrl())
+
+            nav
+                ul.right
+                    li: a(href="https://twitter.com/opendevsecops") Twitter
+                    li: a(href="https://github.com/opendevsecops") GitHub
+
+        article#main
+            block article
+                !=page.html
+
+        footer
+            nav#bottom
+                block bottomnav

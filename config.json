@@ -3,6 +3,8 @@
     "siteUrl": "https://www.gnucitizen.org"
   },
 
+  "filenameTemplate": ":file",
+
   "plugins": [
     "wintersmith-less",
     "wintersmith-browserify"
