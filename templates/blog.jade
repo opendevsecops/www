@@ -38,8 +38,8 @@ block article
         div.mw700
             !=selectedPage.html
 
-    if articles.length
+    if selectedArticles.length
         section.hero
             ul.m0.p0.lstn
-                for article in articles
-                    li: a(href=getPageUrl(article))=article.title
+                for selectedArticle in selectedArticles
+                    li: a(href=getPageUrl(selectedArticle))=selectedArticle.title
