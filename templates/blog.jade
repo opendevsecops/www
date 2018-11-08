@@ -31,10 +31,10 @@ prepend head
 
 block article
     section.hero.separated.top
-        h1.title=selectedPage.title
-        div.date=selectedPage.metadata.date
+        h1=selectedPage.title
+        div.fs-small=selectedPage.rfc822date
 
-    section.cc
+    section.cc.blog
         div.mw700
             !=selectedPage.html
 
