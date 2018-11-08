@@ -1,0 +1,17 @@
+doctype html
+
+- function getPageUrl(res) {
+-   return res.getUrl().replace(/\.html$/, '')
+- }
+
+html(lang="en")
+    head
+        block head
+            title=page.title
+
+            script(type="text/javascript", src=contents['all.js'].getUrl())
+            link(type="text/css", href=contents['all.less'].getUrl(), rel="stylesheet")
+
+    body
+        block body
+            !=page.html

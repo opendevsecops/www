@@ -98,6 +98,12 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
+  &.separated {
+    &.top {
+      border-top: 1px solid @c1;
+    }
+  }
+
   &.wh {
     min-height: 100vh;
   }
@@ -178,6 +184,10 @@ img {
 }
 
 div {
+  &.f1 {
+    flex: 1
+  }
+
   &.cc {
     display: flex;
     flex-direction: column;
@@ -189,7 +199,37 @@ div {
     text-align: center;
   }
 
+  &.mw900 {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  &.mw800 {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &.mw700 {
+    width: 100%;
+    max-width: 700px;
+  }
+
   &.mw600 {
+    width: 100%;
     max-width: 600px;
+  }
+}
+
+ul {
+  &.m0 {
+    margin: 0;
+  }
+
+  &.p0 {
+    padding: 0;
+  }
+
+  &.lstn {
+    list-style-type: none;
   }
 }

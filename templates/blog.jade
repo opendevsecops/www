@@ -1,0 +1,45 @@
+extends page.jade
+
+prepend head
+    - var selectedPage = page
+    - var selectedArticles = []
+
+    - var root = contents['blog']
+    - var index = root['index.json']
+
+    if page === index
+        - var entries = Object.values(root).filter(function (entry) {
+        -   return entry !== index
+        - })
+
+        - var articles = entries.sort(function (itemA, itemB) {
+        -   return Date.parse(itemB.metadata.date) - Date.parse(itemA.metadata.date)
+        - })
+
+        - selectedPage = articles[0]
+
+        for article in [].concat(articles)
+            if article !== page
+                - articles.shift()
+
+            else
+                - break
+
+        - selectedArticles = articles
+
+        - page = selectedPage
+
+block article
+    section.hero.separated.top
+        h1.title=selectedPage.title
+        div.date=selectedPage.metadata.date
+
+    section.cc
+        div.mw700
+            !=selectedPage.html
+
+    if articles.length
+        section.hero
+            ul.m0.p0.lstn
+                for article in articles
+                    li: a(href=getPageUrl(article))=article.title

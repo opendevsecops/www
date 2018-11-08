@@ -1,31 +1,25 @@
-doctype html
+extends base.jade
 
-html(lang="en")
-    head
-        title=page.title
+block body
+    header
+        nav
+            ul.left
+                li: a(href=getPageUrl(contents['index.md'])) Home
+                li: a(href=getPageUrl(contents['blog']['index.json'])) Blog
+                li: a(href=getPageUrl(contents['about.md'])) About
 
-        script(type="text/javascript", src=contents['all.js'].getUrl())
-        link(type="text/css", href=contents['all.less'].getUrl(), rel="stylesheet")
+        div.cc
+            img.f70(src=contents['images']['icon.png'].getUrl())
 
-    body
-        header
-            nav
-                ul.left
-                    li: a(href=contents['index.html'].getUrl()) Home
-                    li: a(href=contents['about.md'].getUrl()) About
+        nav
+            ul.right
+                li: a(href="https://twitter.com/opendevsecops") Twitter
+                li: a(href="https://github.com/opendevsecops") GitHub
 
-            div.cc
-                img.f70(src=contents['images']['icon.png'].getUrl())
+    article#main
+        block article
+            !=page.html
 
-            nav
-                ul.right
-                    li: a(href="https://twitter.com/opendevsecops") Twitter
-                    li: a(href="https://github.com/opendevsecops") GitHub
-
-        article#main
-            block article
-                !=page.html
-
-        footer
-            nav#bottom
-                block bottomnav
+    footer
+        nav#bottom
+            block bottomnav
