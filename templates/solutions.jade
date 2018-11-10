@@ -25,26 +25,26 @@ prepend head
         - page = selectedPage
 
 block article
-    section.split
-        section.cc.p20
+    section.grid.grid-c2-3
+        section.cc.p60
             div.ct
                 h1=page.metadata.caption
                 div=page.metadata.description
                 div.mt20
                     a(href=page.metadata.link, target="_blank") Install
 
-        section.cc.p60.b1
+        section.cc.p60.b4
             div.ct
                 if page.metadata.image
                     img.w70(src=page.metadata.image)
 
                 else
-                    img.w70.identity-icon(data-seed=page.metadata.caption, data-background="[0,0,0,0]")
+                    img.w70.identity-icon(data-seed=page.metadata.caption)
 
     !=page.html
 
     if selectedArticles.length
-        section.grid.grid-c5.grid-cg10.grid-rg10.pt60.pb60.ml20.mr20
+        section.b5.grid.grid-c5.grid-cg10.grid-rg10.pt60.pb60.pl20.pr20
             for selectedArticle in selectedArticles
                 div.cc.fs-small
                     a.flex1.cc(href=getPageUrl(selectedArticle))
