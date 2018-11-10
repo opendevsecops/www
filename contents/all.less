@@ -598,9 +598,11 @@ a {
   text-decoration: none;
   text-transform: uppercase;
 
-  &[target="_blank"]:after {
-    font-family: 'FontAwesome';
-    content: " \f08e";
+  &:not(.icon) {
+    &[target="_blank"]:after {
+      font-family: 'FontAwesome';
+      content: " \f08e";
+    }
   }
 
   &.nav {

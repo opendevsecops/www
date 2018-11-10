@@ -13,6 +13,6 @@ title: About
 <section class="hero">
     <div>
         <h2 class="fw100">Sponsors</h2>
-        <a href="https://websecurify.com" target="_blank"><img class="s64" src="/images/websecurify.svg"/></a>
+        <a class="icon" href="https://websecurify.com" target="_blank"><img class="s64" src="/images/websecurify.svg"/></a>
     </div>
 </section>
