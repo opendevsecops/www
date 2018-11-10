@@ -456,6 +456,8 @@ nav {
   flex-direction: column;
   justify-content: center;
 
+  border-bottom: 1px solid @c1;
+
   ul {
     list-style-type: none;
 
@@ -498,12 +500,6 @@ section {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
-  }
-
-  &.separated {
-    &.top {
-      border-top: 1px solid @c1;
-    }
   }
 
   .margin-mixin();
@@ -678,6 +674,30 @@ img, canvas {
   &.h60 {
     width: auto;
     height: 60%;
+  }
+
+  &.mh256 {
+    min-height: 256px;
+  }
+  
+  &.mh128 {
+    min-height: 128px;
+  }
+  
+  &.mh64 {
+    min-height: 64px;
+  }
+
+  &.mw256 {
+    min-width: 256px;
+  }
+  
+  &.mw128 {
+    min-width: 128px;
+  }
+  
+  &.mw64 {
+    min-width: 64px;
   }
 
   &.s128 {
