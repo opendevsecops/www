@@ -25,7 +25,7 @@ prepend head
         - page = selectedPage
 
 block article
-    section.split
+    section.split.separated.top
         section.cc.p20
             div.ct
                 h1=selectedPage.metadata.caption
@@ -35,7 +35,11 @@ block article
 
         section.cc.p60.b1
             div.ct
-                img.w70(src=selectedPage.metadata.image)
+                if selectedPage.metadata.image
+                    img.w70(src=selectedPage.metadata.image)
+
+                else
+                    canvas.w70.icon(data-seed=selectedPage.metadata.caption)
 
     !=selectedPage.html
 
@@ -44,5 +48,9 @@ block article
             for selectedArticle in selectedArticles
                 div.cc.fs-small
                     a.flex1.cc(href=getPageUrl(selectedArticle))
-                        img.f70(src=selectedArticle.metadata.image)
+                        if selectedArticle.metadata.image
+                            img.f70(src=selectedArticle.metadata.image)
+                        else
+                            canvas.w70.icon(data-seed=selectedArticle.metadata.caption)
+
                         div.mt10.ellipsis=selectedArticle.metadata.caption
