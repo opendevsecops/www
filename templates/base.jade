@@ -1,7 +1,11 @@
 doctype html
 
 - function getPageUrl(res) {
--   return res.getUrl().replace(/\.html$/, '')
+-   if (process.env.NODE_ENV === 'production') {
+-     return res.getUrl().replace(/\.html$/, '')
+-   } else {
+-     return res.getUrl()
+-   }
 - }
 
 html(lang="en")

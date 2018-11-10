@@ -3,6 +3,10 @@
     "siteUrl": "https://opendevsecops.org"
   },
 
+  "require": {
+    "process": "process"
+  },
+
   "plugins": [
     "wintersmith-less",
     "wintersmith-browserify"
