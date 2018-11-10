@@ -7,26 +7,26 @@ prepend head
     - var root = contents['blog']
     - var index = root['index.json']
 
+    - var entries = Object.values(root).filter(function (entry) {
+    -   return entry !== index
+    - })
+
+    - var articles = entries.sort(function (itemA, itemB) {
+    -   return Date.parse(itemB.metadata.date) - Date.parse(itemA.metadata.date)
+    - })
+
+    - selectedPage = articles[0]
+
+    for article in [].concat(articles)
+        if article !== page
+            - articles.shift()
+
+        else
+            - break
+
+    - selectedArticles = articles
+
     if page === index
-        - var entries = Object.values(root).filter(function (entry) {
-        -   return entry !== index
-        - })
-
-        - var articles = entries.sort(function (itemA, itemB) {
-        -   return Date.parse(itemB.metadata.date) - Date.parse(itemA.metadata.date)
-        - })
-
-        - selectedPage = articles[0]
-
-        for article in [].concat(articles)
-            if article !== page
-                - articles.shift()
-
-            else
-                - break
-
-        - selectedArticles = articles
-
         - page = selectedPage
 
 block article

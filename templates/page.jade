@@ -4,12 +4,13 @@ block body
     header
         nav
             ul.left
-                li: a(href=getPageUrl(contents['index.md'])) Home
+                li: a(href=getPageUrl(contents['solutions']['index.json'])) Solutions
                 li: a(href=getPageUrl(contents['blog']['index.json'])) Blog
                 li: a(href=getPageUrl(contents['about.md'])) About
 
         div.cc
-            img.f70(src=contents['images']['icon.png'].getUrl())
+            a.flex1.cc(href=getPageUrl(contents['index.md']))
+                img.f70(src=contents['images']['icon.png'].getUrl())
 
         nav
             ul.right
@@ -19,7 +20,3 @@ block body
     article#main
         block article
             !=page.html
-
-    footer
-        nav#bottom
-            block bottomnav

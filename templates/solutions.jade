@@ -1,0 +1,48 @@
+extends page.jade
+
+prepend head
+    - var selectedPage = page
+    - var selectedArticles = []
+
+    - var root = contents['solutions']
+    - var index = root['index.json']
+
+    - var entries = Object.values(root).filter(function (entry) {
+    -   return entry !== index
+    - })
+
+    - var articles = entries.sort(function (itemA, itemB) {
+    -   return parseInt(itemB.metadata.priority || '0') - parseInt(itemA.metadata.priority || '0')
+    - })
+
+    - selectedPage = entries[0]
+
+    - selectedArticles = entries.filter(function (item) {
+    -   return item !== page
+    - })
+
+    if page === index
+        - page = selectedPage
+
+block article
+    section.split
+        section.cc.p20
+            div.ct
+                h1=selectedPage.metadata.caption
+                div=selectedPage.metadata.description
+                div.mt20
+                    a(href=selectedPage.metadata.link, target="_blank") Install
+
+        section.cc.p60.b1
+            div.ct
+                img.w70(src=selectedPage.metadata.image)
+
+    !=selectedPage.html
+
+    if selectedArticles.length
+        section.grid.grid-c5.grid-cg10.grid-rg10.pt60.pb60.ml20.mr20
+            for selectedArticle in selectedArticles
+                div.cc.fs-small
+                    a.flex1.cc(href=getPageUrl(selectedArticle))
+                        img.f70(src=selectedArticle.metadata.image)
+                        div.mt10.ellipsis=selectedArticle.metadata.caption
