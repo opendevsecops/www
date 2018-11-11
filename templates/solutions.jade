@@ -17,12 +17,14 @@ prepend head
 
     - selectedPage = entries[0]
 
+    if page === index
+        - page = selectedPage
+
+    - var pageIndex = articles.indexOf(page)
+
     - selectedArticles = entries.filter(function (item) {
     -   return item !== page
     - })
-
-    if page === index
-        - page = selectedPage
 
 block article
     section.grid.grid-c2-3

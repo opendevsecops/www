@@ -17,29 +17,25 @@ prepend head
 
     - selectedPage = articles[0]
 
-    for article in [].concat(articles)
-        if article !== page
-            - articles.shift()
-
-        else
-            - break
-
-    - selectedArticles = articles
-
     if page === index
         - page = selectedPage
 
+    - var pageIndex = articles.indexOf(page)
+
+    - selectedArticles = articles.slice(pageIndex + 1, 10 + pageIndex)
+
 block article
     section.hero
-        h1=selectedPage.title
-        div.fs-small=selectedPage.rfc822date
+        h1=page.title
+        div.fs-small=page.rfc822date
 
     section.cc.blog
         div.mw700
-            !=selectedPage.html
+            !=page.html
 
     if selectedArticles.length
         section.hero
+            h2 Previously
             ul.m0.p0.lstn
                 for selectedArticle in selectedArticles
                     li: a(href=getPageUrl(selectedArticle))=selectedArticle.title
