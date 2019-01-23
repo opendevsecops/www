@@ -1,3 +1,4 @@
 {
-  "template": "solutions.jade"
+  "template": "solutions.jade",
+  "filename": "index.html"
 }

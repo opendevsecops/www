@@ -1,3 +1,4 @@
 {
-  "template": "blog.jade"
+  "template": "blog.jade",
+  "filename": "index.html"
 }
