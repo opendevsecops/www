@@ -7,8 +7,6 @@
     "process": "process"
   },
 
-  "filenameTemplate": ":file",
-
   "plugins": [
     "wintersmith-less",
     "wintersmith-browserify"
