@@ -1,7 +1,6 @@
 extends page.jade
 
 prepend head
-    - var selectedPage = page
     - var selectedArticles = []
 
     - var root = contents['solutions']
@@ -11,33 +10,28 @@ prepend head
     -   return entry !== index
     - })
 
-    - var articles = entries.sort(function (itemA, itemB) {
+    - var pages = entries.sort(function (itemA, itemB) {
     -   return parseInt(itemB.metadata.priority || '0') - parseInt(itemA.metadata.priority || '0')
     - })
 
-    - selectedPage = entries[0]
-
     if page === index
-        - page = selectedPage
-
-    - var pageIndex = articles.indexOf(page)
-
-    - selectedArticles = entries.filter(function (item) {
-    -   return item !== page
-    - })
+        - page = entries[0]
 
 block article
-    section.mw800
-        !=page.html
+    section.wh-header.ccv.bb.cw.geopattern(data-seed=page.metadata.geopatternSeed, data-color="#000000", data-baseColor="#000000")
+        div.mla.mra.mw1200
+            if page.metadata.icon
+                img(alt="Icon", src=page.metadata.icon)
+            h1=page.metadata.title
+            div=page.metadata.punch
+            div.mt50
+                a.button(target="_blank", href=page.metadata.link)=(page.metadata.caption || 'Download')
 
-    if selectedArticles.length
-        section.b5.grid.grid-c5.grid-cg10.grid-rg10.pt60.pb60.pl20.pr20
-            for selectedArticle in selectedArticles
-                div.cc.fs-small
-                    a.flex1.cc(href=getPageUrl(selectedArticle))
-                        if selectedArticle.metadata.image
-                            img.f70(src=selectedArticle.metadata.image)
-                        else
-                            img.w70.identity-icon(data-seed=selectedArticle.metadata.caption)
+    section.mt60.mb60.mla.mra.mw1200.grid.grid-c1-3
+        div
+            ul.m0.p0.lstn
+                for page in pages
+                    li.mb20: a.nav2(href=getPageUrl(page))=page.metadata.title
 
-                        div.mt10.ellipsis=selectedArticle.metadata.caption
+        article
+            !=page.html
