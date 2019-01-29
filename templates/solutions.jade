@@ -18,20 +18,20 @@ prepend head
         - page = entries[0]
 
 block article
-    section.wh-header.ccv.bb.cw.geopattern(data-seed=page.metadata.geopatternSeed, data-color="#000000", data-baseColor="#000000")
-        div.mla.mra.mw1200
-            if page.metadata.icon
-                img(alt="Icon", src=page.metadata.icon)
-            h1=page.metadata.title
-            div=page.metadata.punch
-            div.mt50
-                a.button(target="_blank", href=page.metadata.link)=(page.metadata.caption || 'Download')
+    header.bb.cw
+        nav
+            ul.left
+                li=page.metadata.title
 
-    section.mt60.mb60.mla.mra.mw1200.grid.grid-c1-3
         div
-            ul.m0.p0.lstn
-                for page in pages
-                    li.mb20: a.nav2(href=getPageUrl(page))=page.metadata.title
 
-        article
-            !=page.html
+        nav
+            ul.right
+                li: a(href="#overview") Overview
+                li: a(href="#use-cases") Use Cases
+                li: a(href="#features") Features
+                li: a(href="#docs") Docs
+                li: a(href="#download") Download
+
+    div
+        !=page.html
